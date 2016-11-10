@@ -1,0 +1,23 @@
+language: c
+
+env:
+  global:
+   # The next declaration is the encrypted COVERITY_SCAN_TOKEN, created
+   #   via the "travis encrypt" command using the project repo's public key
+   - secure: "VTx6tD44ylTSpKT9VolIpN0vCYvWGZiJ8oYFpi4B4wpF5iBb6HSl5FtqVaKlFpD1A1T/Xj4wUS9j0zUBiWHwyKa7RlU6Nrm6CR2xGkBpJv079uB0XOKHzBXg+faW2nth1oR74e/jj7pGIjAf0BQ0WjoaWqFroGiHe44K7PJ1BlmknjfxMXvqIrdzjpTkh1XZ7UvTor8IiwU+eprxC2fJAG1F3xvsBVs6ekgy2eJC6DB4Ve2fMu4r9m9C4UgJMfYJioMkznrTrsyHCsqsqi8Ri5VYlp3tlKn+5YkFZBrBbiyBlOf7RaGES4DM+Or1RaWKskdKd4jyA6XJkVagRKrvYDXmeRKi/VL1B/H7VIRZMSVACNF1L4iqSZHJ1jIuiwGlztepbxkLRWs9Ey/XrZSyDPEbiuT6nCwZVbcBFakvd880a4tPYffwN4wWUOvL2bKFCCB1Oo5YvBMyIMBwv5DiUhO5y4QOW2jGA86U9eZfzhFB3WJcNv4OoQrFUoWaDMREFLTSvs5dYMrKLwp0x1rcXG2baOnuYKFt7OtCBQi1YShq58jRy4HYxnK8LrAQtZdE071vb6XWyfnp2bIMgJmTd7DJzp/XGt8XtC50EJmywGCW1Rysc/Aq6mN5UTASEFWr4Uza89VkBrs4S+M3S1IKeM2O6TAaXN/ybVUU8/cT3VA="
+
+addons:
+  coverity_scan:
+    project:
+      name: "vchong/coverity_test"
+      description: "Build submitted via Travis CI"
+    notification_email: victor.chong@linaro.org
+    build_command_prepend: "make clean"
+    build_command:   "./build_and_run.sh"
+    branch_pattern: coverity_scan
+
+compiler:
+  - gcc
+
+script:
+  - ./build_and_run.sh
