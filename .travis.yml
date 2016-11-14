@@ -20,10 +20,13 @@ compiler:
   - gcc
 
 before_install:
-  - ./before_install.sh
+  - echo "COVERITY_SCAN_BRANCH = ${COVERITY_SCAN_BRANCH}"
+  - if [ "${COVERITY_SCAN_BRANCH}" != 1 ]; then ./before_install.sh ; fi
 
 before_script:
-  - ./before_script.sh
+  - echo "COVERITY_SCAN_BRANCH = ${COVERITY_SCAN_BRANCH}"
+  - if [ "${COVERITY_SCAN_BRANCH}" != 1 ]; then ./before_script.sh ; fi
 
 script:
-  - ./script.sh
+  - echo "COVERITY_SCAN_BRANCH = ${COVERITY_SCAN_BRANCH}"
+  - if [ "${COVERITY_SCAN_BRANCH}" != 1 ]; then ./script.sh ; fi
