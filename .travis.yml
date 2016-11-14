@@ -12,13 +12,18 @@ addons:
       name: "vchong/coverity_test"
       description: "Build submitted via Travis CI"
     notification_email: victor.chong@linaro.org
-    build_command_prepend: "make clean"
-    build_command:   "./build_and_run.sh"
+    build_command_prepend: "./before_install.sh; ./before_script.sh"
+    build_command:   "./script.sh"
     branch_pattern: coverity_scan
 
 compiler:
   - gcc
 
+before_install:
+  - ./before_install.sh
+
+before_script:
+  - ./before_script.sh
+
 script:
-  - ls
-  #- ./build_and_run.sh
+  - ./script.sh
