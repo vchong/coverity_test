@@ -11,6 +11,10 @@ fi
 
 echo "ls -al"
 ls -al
+
+echo FOO=$FOO
+echo BAR=$BAR
+
 make clean
 make
 ./hello

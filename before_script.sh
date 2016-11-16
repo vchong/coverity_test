@@ -7,3 +7,7 @@ touch before_script.log
 echo "ls -al"
 ls -al
 if [ "${COVERITY_SCAN_BRANCH}" != 1 ]; then echo "undefined" ; else echo "defined" ; fi
+echo FOO=$FOO
+echo BAR=$BAR
+export BAR=UP
+echo BAR=$BAR
